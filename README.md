@@ -3,6 +3,25 @@ Raccoon - Nexas Mod Manager for servers
 
 This is a server sided mod manager designed to be used within a stack on docker to allow the adding, removing and updating of mods from Nexus Mods
 
+## Thought process
+
+
+### Environment Variables
+
+| Variable Name     | Default Value | Description |
+|-------------------|---------------|-------------|
+| NEXUS_API_TOKEN   |               |             |
+| DISCORD_API_TOKEN |               |             |
+
+### Discord Bot Commands
+
+| Commands                 | Description                  |
+|--------------------------|------------------------------|
+| /add <mod id/mod url>    | Add a mod to the server      |
+| /remove <mod id/mod url> | Remove a mod from the server |
+| /list                    | Get a list of installed mods |
+| /check                   | Manaul check for updates     |
+
 
 ## Python Libraries
 ### Discord Bot API
