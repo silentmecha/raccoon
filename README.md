@@ -1,5 +1,7 @@
 # raccoon
-Raccoon - Nexas Mod Manager
+Raccoon - Nexas Mod Manager for servers
+
+This is a server sided mod manager designed to be used within a stack on docker to allow the adding, removing and updating of mods from Nexus Mods
 
 
 ## Python Libraries
