@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+    python:
+        volumes:
+            - './python:/home/'
+        image: python:3.8
+        command: bash
+        stdin_open: true
+        tty: true
