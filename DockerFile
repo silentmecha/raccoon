@@ -1,0 +1,31 @@
+cat Dockerfile
+
+from python:3.8
+
+RUN useradd -r raccoon ##adding raccoon user
+
+USER root ##installing discord library as root
+RUN pip install -U discord.py
+
+USER raccoon ##back to original user
+RUN cd /home  \                 ##preparing internal filestructure
+	&& MKDIR ${RACC_ROOT_DIR} \
+	&& MKDIR ${RACC_DL_DIR} \
+	&& MKDIR ${RACC_TEMP_DIR} \
+#	&& MKDIR ${RACC_BIND_DIR} \  ##Theoretically this will only be used for debug / ftp / samba in edge cases. 
+	&& cd ${RACC_ROOT_DIR}
+
+##copy python files into root app folder
+COPY /pyscripts/.  ${RACC_ROOT_DIR}
+
+
+
+##execute raccoon_main with arguments 
+RUN pip raccoon.py -discord_token=$DISCORD_API_TOKEN -nexus_token=$NEXUS_API_TOKEN -backup_interval=$RACC_BACK_INTERVAL -backup_count=$RACC_BACK_COUNT_MAX
+
+
+
+
+
+
+

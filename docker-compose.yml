@@ -3,6 +3,7 @@ services:
     python:
         volumes:
             - './python:/home/'
+#            - './python/app:/home/raccoon/bind/'
         image: python:3.8
         command: bash
         stdin_open: true
