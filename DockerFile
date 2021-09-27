@@ -31,7 +31,7 @@ WORKDIR "${RACC_ROOT_DIR}"
 #	&& cd ${RACC_ROOT_DIR}
 
 ##copy python files and dependencies into root app folder
-COPY /source/.  "${RACC_ROOT_DIR}"
+COPY "/source/."  "${RACC_ROOT_DIR}"
 
 ## execute dependencies
 RUN pip install -r requirements.txt
