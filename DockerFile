@@ -3,11 +3,10 @@ from python:3.8
 ARG PUID=1000
 RUN useradd -u "${PUID}" -m raccoon ##setting user for raccoon
 
-
-WORKDIR ${HOME}
-
 ##back to original user
 USER raccoon 
+
+WORKDIR ${HOME}
 
 ## RUN cd /home  \  ##preparing internal filestructure
 #	&& MKDIR ${RACC_ROOT_DIR} \
@@ -17,8 +16,7 @@ USER raccoon
 #	&& cd ${RACC_ROOT_DIR}
 
 ##copy python files and dependencies into root app folder
-COPY /pyscripts/.  ${RACC_ROOT_DIR}
-COPY requirements.txt requirements.txt
+COPY /source/.  ${RACC_ROOT_DIR}
 
 ## execute dependencies
 RUN pip install -r requirements.txt

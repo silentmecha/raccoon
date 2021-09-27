@@ -4,7 +4,9 @@ services:
         volumes:
             - './python:/home/'
 #            - './python/app:/home/raccoon/bind/'
-        image: python:3.8
+        build: .
+        image: silentmecha/raccoon:latest
+        restart: unless-stopped
         command: bash
         stdin_open: true
         tty: true
