@@ -1,3 +1,7 @@
+# -- NOTICE FOR TESTING BRANCH -- 
+
+Still requires updates and configuration pending dev environment results from ''replit'' repo. 
+
 # Raccoon
 Raccoon - Nexas Mod Manager for servers
 
