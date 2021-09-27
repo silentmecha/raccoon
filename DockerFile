@@ -1,14 +1,29 @@
-from python:3.8
+FROM python:3.8
 
+LABEL maintainer=dev@silentmecha.co.za
+
+
+# setting env defaults
+ARG USER=raccoon
 ARG PUID=1000
-RUN useradd -u "${PUID}" -m raccoon ##setting user for raccoon
+ARG RACC_ROOT_DIR=/opt/raccoon/
+ARG RACC_DL_TEMP=/opt/raccoon/tmp/
+RUN useradd -u "${PUID}" -m "${USER}"
 
-##back to original user
-USER raccoon 
+# creating prerequisite working directories and setting root
+USER root
+RUN MKDIR -p "${RACC_ROOT_DIR}"  "${RACC_DL_TEMP}" \
+	&& chown -R "${USER}:"  "${RACC_ROOT_DIR}" 
 
-WORKDIR ${HOME}
 
-## RUN cd /home  \  ##preparing internal filestructure
+
+# set workdir and user
+USER "${USER}"
+WORKDIR "${RACC_ROOT_DIR}"
+
+
+#   unused , see above
+#   RUN cd /home  \  ##preparing internal filestructure
 #	&& MKDIR ${RACC_ROOT_DIR} \
 #	&& MKDIR ${RACC_DL_DIR} \
 #	&& MKDIR ${RACC_TEMP_DIR} \
@@ -16,7 +31,7 @@ WORKDIR ${HOME}
 #	&& cd ${RACC_ROOT_DIR}
 
 ##copy python files and dependencies into root app folder
-COPY /source/.  ${RACC_ROOT_DIR}
+COPY /source/.  "${RACC_ROOT_DIR}"
 
 ## execute dependencies
 RUN pip install -r requirements.txt
@@ -24,4 +39,4 @@ RUN pip install -r requirements.txt
 # The `|| exit 1` isn't required but it's good practice anyway.
 HEALTHCHECK CMD discordhealthcheck || exit 1
 
-CMD ["python", "/home/raccoon/raccoon.py"]
+CMD ["python", "${RACC_ROOT_DIR}/raccoon.py"]

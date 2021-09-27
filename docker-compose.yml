@@ -2,8 +2,7 @@ version: '3.3'
 services:
     python:
         volumes:
-            - './python:/home/'
-#            - './python/app:/home/raccoon/bind/'
+            - './source:/opt/raccoon/'
         build: .
         image: silentmecha/raccoon:latest
         restart: unless-stopped
