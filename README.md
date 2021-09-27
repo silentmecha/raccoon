@@ -43,6 +43,8 @@ https://replit.com/@silent001/Racoon-dev
 [A python wrapper for the Nexus API](https://github.com/GandaG/pynxm)
 
 ## Resources
+
+###### [Python Rest API](https://www.nylas.com/blog/use-python-requests-module-rest-apis/)
 ###### [Discord Cummunity Resources](https://discord.com/developers/docs/topics/community-resources)
 
 ###### [Nexus Mods Resources](https://app.swaggerhub.com/apis-docs/NexusMods/nexus-mods_public_api_params_in_form_data/1.0)
