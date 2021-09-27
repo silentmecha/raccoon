@@ -4,8 +4,9 @@ from python:3.8
 
 RUN useradd -r raccoon ##adding raccoon user
 
-USER root ##installing discord library as root
-RUN pip install -U discord.py
+USER root ##installing discord and pynxm dependencies
+RUN pip install -U discord.py 
+RUN pip install pynxm 
 
 USER raccoon ##back to original user
 RUN cd /home  \                 ##preparing internal filestructure
