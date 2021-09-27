@@ -1,0 +1,3 @@
+pynxm
+discord.py
+discordhealthcheck

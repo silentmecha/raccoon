@@ -1,32 +1,29 @@
-cat Dockerfile
-
 from python:3.8
 
-RUN useradd -r raccoon ##adding raccoon user
+ARG PUID=1000
+RUN useradd -u "${PUID}" -m raccoon ##setting user for raccoon
 
-USER root ##installing discord and pynxm dependencies
-RUN pip install -U discord.py 
-RUN pip install pynxm 
 
-USER raccoon ##back to original user
-RUN cd /home  \                 ##preparing internal filestructure
-	&& MKDIR ${RACC_ROOT_DIR} \
-	&& MKDIR ${RACC_DL_DIR} \
-	&& MKDIR ${RACC_TEMP_DIR} \
+WORKDIR ${HOME}
+
+##back to original user
+USER raccoon 
+
+## RUN cd /home  \  ##preparing internal filestructure
+#	&& MKDIR ${RACC_ROOT_DIR} \
+#	&& MKDIR ${RACC_DL_DIR} \
+#	&& MKDIR ${RACC_TEMP_DIR} \
 #	&& MKDIR ${RACC_BIND_DIR} \  ##Theoretically this will only be used for debug / ftp / samba in edge cases. 
-	&& cd ${RACC_ROOT_DIR}
+#	&& cd ${RACC_ROOT_DIR}
 
-##copy python files into root app folder
+##copy python files and dependencies into root app folder
 COPY /pyscripts/.  ${RACC_ROOT_DIR}
+COPY requirements.txt requirements.txt
 
+## execute dependencies
+RUN pip install -r requirements.txt
 
+# The `|| exit 1` isn't required but it's good practice anyway.
+HEALTHCHECK CMD discordhealthcheck || exit 1
 
-##execute raccoon_main with arguments 
-RUN pip raccoon.py -discord_token=$DISCORD_API_TOKEN -nexus_token=$NEXUS_API_TOKEN -backup_interval=$RACC_BACK_INTERVAL -backup_count=$RACC_BACK_COUNT_MAX
-
-
-
-
-
-
-
+CMD ["python", "/home/raccoon/raccoon.py"]

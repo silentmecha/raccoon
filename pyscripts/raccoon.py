@@ -1,27 +1,11 @@
-import sys ,getopt
+import os
 import discord
 import pynxm
 
 # how to read arguments from commandline into program.
 # will need to do some syntax fixing so as to read "arg=key" where key is unknown
 
-
-def main(argv):
-   try:
-      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
-   except getopt.GetoptError:
-      print(f'test.py -i <inputfile> -o <outputfile>')
-      sys.exit(2)
-   for opt, arg in opts:
-      if opt == '-h':
-         print(f'test.py -i <inputfile> -o <outputfile>')
-         sys.exit()
-      elif opt in ("-i", "--ifile"):
-         inputfile = arg
-      elif opt in ("-o", "--ofile"):
-         outputfile = arg
-   print(f'Input file is "', inputfile)
-   print(f'Output file is "', outputfile)
-
-if __name__ == "__main__":
-   main(sys.argv[1:])
+nexus_token=os.getenv('NEXUS_API_TOKEN')
+discord_toekn=os.getenv('DISCORD_API_TOKEN')
+#max_backup_count=os.getenv('RACC_BACK_COUNT_MAX')
+#beckup_interval=os.getenv('RACC_BACK_INTERVAL')
