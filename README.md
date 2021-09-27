@@ -31,6 +31,7 @@ This is a server sided mod manager designed to be used within a stack on docker 
 | /remove <mod id/mod url> | Remove a mod from the server |
 | /list                    | Get a list of installed mods |
 | /check                   | Manaul check for updates     |
+| /help                    | List the above commands      |
 
 
 ## Python Libraries
