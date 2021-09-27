@@ -34,7 +34,7 @@ This is a server sided mod manager designed to be used within a stack on docker 
 | /help                    | List the above commands      |
 
 ## Temperary dev environment
-https://replit.com/@MartinnRoelofse/Racoon-dev
+https://replit.com/@silent001/Racoon-dev
 
 ## Python Libraries
 ### Discord Bot API
