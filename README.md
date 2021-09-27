@@ -33,6 +33,8 @@ This is a server sided mod manager designed to be used within a stack on docker 
 | /check                   | Manaul check for updates     |
 | /help                    | List the above commands      |
 
+## Temperary dev environment
+https://replit.com/@MartinnRoelofse/Racoon-dev
 
 ## Python Libraries
 ### Discord Bot API
